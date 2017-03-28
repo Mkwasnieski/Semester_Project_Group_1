@@ -19,6 +19,11 @@ module.exports = {
       required: true
     },
 
+    starwars_name: {
+      type: 'string',
+      required: true
+    },
+
     street_address: {
       type: 'string',
       required: false,
