@@ -13,7 +13,13 @@ module.exports = {
 
   create: function(req, res, next) {
       Contestant.create(req.params.all(), function contestantCreated(err,contestant) {
+        swname: getstarwars_name();
+        parms = req.params.all();
+        parms = starwars_name = swname;
+        contestant.create (params);
+
         if (err) return next(err);
+
 
         res.redirect('/contestant/show/' + contestant.id);
       });
