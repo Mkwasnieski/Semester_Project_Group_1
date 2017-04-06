@@ -12,18 +12,38 @@ module.exports = {
   },
 
   create: function(req, res, next) {
-      Contestant.create(req.params.all(), function contestantCreated(err,contestant) {
-        swname: getstarwars_name();
-        parms = req.params.all();
-        parms = starwars_name = swname;
-        contestant.create (params);
 
-        if (err) return next(err);
+    function randomInt(low, high){
+      var high = 88;
+      var low = 1;
+      return Math.floor(Math.random() * (high - low) + low);
+    };
 
+    function get_starwars_name(contestant, callback) {
 
-        res.redirect('/contestant/show/' + contestant.id);
-      });
-    },
+      var http = require('http');
+      getstarwars_name = 0;
+
+      options = {
+        host: 'http://swapi.co/api/',
+        port: 80,
+        path: '/person/JSON?symbol=' + randomInt,
+        method: 'GET'
+      };
+
+    };
+
+    Contestant.create(req.params.all(), function contestantCreated(err,contestant) {
+      swname: getstarwars_name();
+      parms = req.params.all();
+      parms = starwars_name = swname;
+      contestant.create (params);
+
+      if (err) return next(err);
+
+      res.redirect('/contestant/show/' + contestant.id);
+    });
+  },
 
   show: function(req, res, next) {
     Contestant.findOne(req.param('id'), function foundContestant(err,contestant) {
