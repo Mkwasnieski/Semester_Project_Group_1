@@ -11,42 +11,84 @@ module.exports = {
     res.view();
   },
 
-  create: function(req, res, next) {
+  create: function (req, res, next) {
 
-    function randomInt(low, high){
+    function randomInt() {
       var high = 88;
       var low = 1;
       return Math.floor(Math.random() * (high - low) + low);
     };
 
+    var swname = "";
+    /// response, player, and callback
+    function process_response(webservice_response, callback) {
+      var webservice_data = "";
+      webservice_response.on('error', function (e) {
+        console.log(e.message);
+        callback("Error: " + e.message);
+      });
+
+      webservice_response.on('data', function (chunk) {
+        webservice_data += chunk;
+      });
+
+      webservice_response.on('end', function () {
+        starwars_data = JSON.parse(webservice_data);
+        swname = starwars_data.name;
+        //player.starwars_name = starwars_data.name;
+        //player.save()
+        //pass contestant in both
+        callback()
+      });
+    }
+
+    //call contestant player here
     function get_starwars_name(contestant, callback) {
 
       var http = require('http');
-      getstarwars_name = 0;
 
       options = {
-        host: 'http://swapi.co/api/',
+        host: 'swapi.co',
         port: 80,
-        path: '/person/JSON?symbol=' + randomInt,
+        path: '/api/people/' + randomInt() + "/",
         method: 'GET'
       };
 
+      var webservice_request = http.request(options, function(response) {
+        //resposne, players, callback
+        process_response(response, callback)
+      });
+      webservice_request.end();
+
+      //console.log(starwars_name);
     };
 
-    Contestant.create(req.params.all(), function contestantCreated(err,contestant) {
-      swname: getstarwars_name();
+    swname = get_starwars_name();
+
+
+    async.each(contestant, get_starwars_name, function(err) {
       parms = req.params.all();
-      parms = starwars_name = swname;
-      contestant.create (params);
+      parms.starwars_name = swname;
 
-      if (err) return next(err);
+      Contestant.create(parms, function contestantCreated(err, contestant) {
+        if (err) return next(err);
 
-      res.redirect('/contestant/show/' + contestant.id);
+        res.redirect('/contestant/show/' + contestant.id);
+      });
+    },
+
+      if(err) console.log(err);
+      //console.log('done');
+
+      res.view({
+        contestant: contestant
+      });
     });
-  },
 
-  show: function(req, res, next) {
-    Contestant.findOne(req.param('id'), function foundContestant(err,contestant) {
+
+
+  show: function (req, res, next) {
+    Contestant.findOne(req.param('id'), function foundContestant(err, contestant) {
       if (err) return next(err);
 
       if (!contestant) return next();
