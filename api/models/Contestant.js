@@ -7,7 +7,7 @@
 
 module.exports = {
 
-  attributes:{
+  attributes: {
 
     first_name: {
       type: 'string',
@@ -21,39 +21,7 @@ module.exports = {
 
     starwars_name: {
       type: 'string',
-      required: true
-    },
 
-    street_address: {
-      type: 'string',
-      required: false,
-    },
-
-    city: {
-      type: 'string',
-      required: false,
-    },
-
-    state: {
-      type: 'string',
-      required: false,
-    },
-
-    zip: {
-      type: 'string',
-      required: false,
-    },
-
-    email: {
-      type: 'string',
-      email: true,
-      required: false,
-
-    },
-
-    cell_phone: {
-      type: 'string',
-      required: false,
-    },
+    }
   }
-};
+}
