@@ -36,12 +36,10 @@ module.exports = {
         webservice_response.on('end', function () {
           starwars_data = JSON.parse(webservice_data);
           player.starwars_name = starwars_data.name;
-          player.save(
-           function (player) {
-              console.log(player.starwars_name);
-           });
+          console.log(starwars_data.name);
+          player.save(callback);
         });
-          callback();
+          //callback();
       }
 
       function get_starwars_name(player, callback) {
@@ -61,11 +59,11 @@ module.exports = {
         webservice_request.end();
       };
 
-      async.each(contestant, get_starwars_name, function (err) {
+      async.each([contestant], get_starwars_name, function (err) {
         if (err) console.log(err);
 
         res.view({
-          contestant: contestant
+          contestant: [contestant]
         });
       });
 
