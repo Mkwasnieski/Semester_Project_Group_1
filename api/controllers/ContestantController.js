@@ -83,5 +83,21 @@ module.exports = {
     });
   },
 
+  index: function (req, res, next) {
+    Contestant.find(function foundContestant(err, contestants) {
+      if (err) return next(err);
+
+      res.view({
+        contestants: contestants
+      });
+    });
+  },
+
+  destroy: function(req, res, next) {
+    Contestant.destroy(req.param('id')).exec(function() {
+      res.redirect('/contestant/');
+    });
+  }
+
 }
 

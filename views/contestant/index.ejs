@@ -1,1 +1,27 @@
-Home Page!
+
+  <h1>Comprehensive Contestant Listing:</h1>
+
+  <div id="tables">
+
+    <table>
+
+      <tr>
+        <th>ID</th>
+        <th>Contestant Name</th>
+        <th>Starwars Name</th>
+      </tr>
+
+      <% _.each(contestants, function(contestant) { %>
+      <tr data-id="<%= contestant.id %>" data-model="contestant">
+        <td><%= contestant.id %></td>
+        <td><%= contestant.first_name + " " + contestant.last_name%></td>
+        <td><%= contestant.starwars_name %></td>
+
+        <td id="special"><a href="/contestant/show/<%= contestant.id %>">Details</a></td>
+        <td id="special"><a href="/contestant/edit/<%= contestant.id %>">Edit</a></td>
+        <td id="special"><a href="/contestant/destroy/<%= contestant.id %>">Delete</a></td>
+      </tr>
+      <% })%>
+    </table>
+
+  </div>

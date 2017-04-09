@@ -64,7 +64,7 @@
 
 #swname {
   color: red;
-  margin-left: 20%;
+  margin-left: 35%;
 }
 
 h1 {
@@ -76,7 +76,7 @@ h1 {
 
 
 /* This formats all div tags with content3 id */
-#content3
+#content2
 {
   border-style: solid;
   border-width: medium;
@@ -87,6 +87,90 @@ h1 {
   width: 300px;
   margin-left: 10%;
   margin-top: 2%;
+}
+
+/* This formats all div tags with content3 id */
+#content3
+{
+  border-style: solid;
+  border-width: medium;
+  border-color: #180351;
+  background-color: #fff;
+  color: black;
+  padding: 10px;
+  width: 450px;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+/* This modifies how the div tag schedule will be displayed on the customer list page */
+#tables
+{
+  width: 1100px;
+  margin-bottom: 10%;
+  background-color: #F0F0F0;
+  border-spacing: 1px;
+  padding: 10px;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+/* This modifies how table row elements are dispalyed */
+tr
+{
+  height: 50px;
+  text-align: center;
+  background-color: #C1CDC1;
+}
+
+/* This modifies how table row hover elements are displayed */
+tr:hover
+{
+  background-color: #2F4F4f;
+  color: #fff;
+}
+
+/* This modifies the customer listing table cell elements */
+#tables.td
+{
+  color: #001c20;
+  width: 100px;
+  height: 50px;
+}
+
+/* This modifies how table show, edit, delete elements are displayed */
+#special
+{
+  color: #001c20;
+  width: 45px;
+
+}
+
+/* This modifies how table cell hover elements are displayed */
+td:hover
+{
+  background-color: #B8860B;
+  color: #fff;
+}
+
+/* This modifies how table header elements are displayed */
+th
+{
+  background-color: #2F4F4f;
+  color: #fff;
+  font-weight: bold;
+  width: 125px;
+  height: 10px;
+  text-align: center;
+
+}
+
+/* This modifies how table header hover elements are displayed */
+th:hover
+{
+  background-color: #B8860B;
+  color: white;
 }
 
 
