@@ -4,6 +4,26 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+/* Styling added by Dakota */
+#homepage {
+  background-color: #2F4F4f;
+  color: white;
+  border-style: solid;
+  border-width: medium;
+  border-color: #180351;
+  padding: 10px;
+  width: 650px;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+#swname {
+  color: red;
+  margin-left: 30%
+}
+
+
+/* All bootstrp stying */
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
